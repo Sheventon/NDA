@@ -39,6 +39,8 @@ public class User {
     @Column(length = 11)
     private String phone;
 
+    private String password;
+
     @Enumerated(value = EnumType.STRING)
     private UserState state;
 

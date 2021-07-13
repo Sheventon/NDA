@@ -1,5 +1,6 @@
 package ru.itis.usersservice.services;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itis.usersservice.dto.SignUpDto;
 import ru.itis.usersservice.dto.UserDto;
@@ -24,10 +25,14 @@ public class SignUpServiceImpl implements SignUpService {
 
     private final RoleRepository roleRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     public SignUpServiceImpl(UserRepository userRepository,
-                             RoleRepository roleRepository) {
+                             RoleRepository roleRepository,
+                             PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -42,6 +47,8 @@ public class SignUpServiceImpl implements SignUpService {
                 .roles(Collections.singletonList(role))
                 .state(User.UserState.ACTIVE)
                 .emailState(User.EmailState.NOT_CONFIRMED)
+                .password(passwordEncoder
+                        .encode(userDto.getPassword()))
                 .build();
         role.getUsers().add(newUser);
 
