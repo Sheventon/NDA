@@ -48,5 +48,10 @@ public class SignUpDto {
             example = "89276669977")
     private String phone;
 
+    @NotNull
+    @ApiModelProperty(value = "The user's password",
+            example = "Qwerty007")
+    private String password;
+
 
 }
