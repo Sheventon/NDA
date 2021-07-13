@@ -1,0 +1,13 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: USER-SERVICE
+
+eureka:
+  client:
+    service-url.def ault: http://localhost:8761/eureka
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
