@@ -1,14 +1,21 @@
 server:
   port: 80
+
 zuul:
   ribbon:
     eager-load:
       enabled: true
+  routes:
+    user-service:
+      path: /user/**
+      service-id: USER-SERVICE
+
 spring:
   application:
     name: API-GATEWAY
+
 eureka:
   client:
     service-url.def ault: http://localhost:8761/eureka
-    instance:
-      hostname: localhost
+  instance:
+    hostname: localhost
