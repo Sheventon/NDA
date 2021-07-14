@@ -39,13 +39,8 @@ public class ChatController {
     @GetMapping("/users/me")
     public ResponseEntity<?> getAuthUser() {
         //TODO опять же таки решить момент как брать id аутентифицированного пользователя
-//        User user = chatService.getUserById(1L);
-        User userTest = User.builder()
-                .id(1L)
-                .lastName("sdfsdfs")
-                .firstName("cvcvcvcv")
-                .build();
-        return ResponseEntity.ok(userTest);
+        User user = chatService.getUserById(1L);
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/users/messages/{receptorId}")
