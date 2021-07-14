@@ -3,25 +3,23 @@ package ru.itis.adsservice.models;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
 @Setter
 @RequiredArgsConstructor
-@EqualsAndHashCode
-@ToString
 @Builder
 @AllArgsConstructor
 @Entity
-public class Renta {
+public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime from;
+    private LocalDate timeFrom;
 
-    private LocalDateTime to;
+    private LocalDate timeTo;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "rent")
