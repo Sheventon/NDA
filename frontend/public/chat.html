@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.min.js"
+            integrity="sha512-tL2F77BkS6GmjDMOvj6aBGHFsNRC3s4c36Iisdb3sI1q4PN/NgzmIfvI7lyccBIyrFGnhgz6pjAFKADNBeTUzw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"
+            integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body onload="connect()">
+<h1 id="testImport"></h1>
+<div class="wrapper">
+    <section class="msger">
+        <main class="msger-chat" id="messages">
+
+        </main>
+        <div class="msger-inputarea">
+            <input class="msger-input" id="message" placeholder="Enter your message...">
+            <button id="sendBtn" type="submit" class="msger-send-btn" onclick="send()">Send</button>
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="/script/chat-script.js"></script>
+</body>
+</html>
