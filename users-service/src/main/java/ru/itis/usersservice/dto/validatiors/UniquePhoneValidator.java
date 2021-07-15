@@ -29,6 +29,6 @@ public class UniquePhoneValidator implements
     @Override
     public boolean isValid(String phone,
                            ConstraintValidatorContext constraintValidatorContext) {
-        return userService.getByPhoneNumber(phone) == null;
+        return !userService.phoneIsExists(phone);
     }
 }

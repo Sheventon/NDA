@@ -29,7 +29,7 @@ public class Role {
     @Enumerated(EnumType.STRING)
     private RoleValue role;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "user_has_role",
             joinColumns = @JoinColumn(name = "role_id"),

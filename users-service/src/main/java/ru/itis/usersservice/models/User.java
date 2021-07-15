@@ -50,6 +50,9 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private List<Role> roles;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private ConfirmCode confirmCode;
+
 
     /**
      * email states for account verification

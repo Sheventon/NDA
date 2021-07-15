@@ -26,4 +26,8 @@ public interface UserService {
     UserDto updateById(UpdateUserDto userDto);
 
     UserDto getByPhoneNumber(String phone);
+
+    boolean emailIsExists(String email);
+
+    boolean phoneIsExists(String phone);
 }
