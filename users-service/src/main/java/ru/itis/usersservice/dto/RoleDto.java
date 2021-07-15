@@ -1,5 +1,7 @@
 package ru.itis.usersservice.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
 import ru.itis.usersservice.models.Role;
@@ -16,8 +18,11 @@ import java.util.stream.Collectors;
  */
 @Data
 @Builder
+@ApiModel(description = "Role data transfer model")
 public class RoleDto {
 
+    @ApiModelProperty(value = "Role value",
+            example = "USER")
     private String name;
 
     public static RoleDto from(Role role) {
@@ -26,7 +31,7 @@ public class RoleDto {
                 .build();
     }
 
-    public static List<RoleDto> from(List<Role> roles){
+    public static List<RoleDto> from(List<Role> roles) {
         return roles.stream().map(RoleDto::from)
                 .collect(Collectors.toList());
     }

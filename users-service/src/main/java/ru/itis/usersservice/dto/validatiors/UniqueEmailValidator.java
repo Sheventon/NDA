@@ -30,6 +30,6 @@ public class UniqueEmailValidator implements
     @Override
     public boolean isValid(final String email,
                            ConstraintValidatorContext constraintValidatorContext) {
-        return userService.getByEmail(email) == null;
+        return !userService.emailIsExists(email);
     }
 }
