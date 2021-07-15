@@ -12,8 +12,12 @@ let userId = 'test';
 
 app.use('', router);
 
+// template config
+app.set('views', path.join(__dirname, 'public'));
+app.set('view engine', 'ejs');
+
 // static
-app.use("/script", express.static(path.join(__dirname, "script")))
+app.use(express.static(path.join(__dirname, "/script")))
 
 // routers
 router.use(homeRouter);

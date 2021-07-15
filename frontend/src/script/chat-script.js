@@ -1,5 +1,6 @@
 let stompClient = null;
 let users;
+let recId;
 const CHAT_SERVICE = "http://localhost:8600";
 
 let msgerChat = document.getElementById("messages");
@@ -15,7 +16,7 @@ function getUsersInfo() {
         cache: false,
         type: 'GET',
         setRequestHeader: '"Content-Type", "application/json"',
-        url: CHAT_SERVICE + "/chat/2",
+        url: CHAT_SERVICE + "/chat/" + recId,
         contentType: "application/json",
         success: function (data) {
             users = JSON.parse(JSON.stringify(data));
@@ -32,7 +33,8 @@ function scrollMessages() {
     }, 800);
 }
 
-function connect() {
+function connect(id) {
+    recId = id;
     SockJS = new SockJS(CHAT_SERVICE + "/ws");
     stompClient = Stomp.over(SockJS);
     stompClient.connect({}, onConnected, onError);

@@ -14,7 +14,7 @@
             integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body onload="connect()">
+<body onload="connect(<%=userId%>)">
 <h1 id="testImport"></h1>
 <div class="wrapper">
     <section class="msger">
@@ -27,6 +27,6 @@
         </div>
     </section>
 </div>
-<script type="text/javascript" src="/src/script/chat-script.js"></script>
+<script type="text/javascript" src="/chat-script.js"></script>
 </body>
 </html>
