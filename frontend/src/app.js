@@ -17,7 +17,9 @@ app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs');
 
 // static
-app.use(express.static(path.join(__dirname, "/script")))
+app.use(express.static(path.join(__dirname, "/script")));
+app.use(express.static(path.join(__dirname, "/style")));
+app.use(express.static(path.join(__dirname, "/assets")));
 
 // routers
 router.use(homeRouter);

@@ -23,6 +23,7 @@ function getUsersInfo() {
             console.log(users.recipientId);
             console.log(users.senderId);
             loadMessage();
+            insertName();
         }
     })
 }
@@ -49,6 +50,13 @@ function onConnected() {
     );
 }
 
+function insertName() {
+    let test = users.recipientFirstName + ' ' + users.recipientLastName;
+    console.log(test);
+    document.getElementById('ms_name').innerText = test;
+
+}
+
 function sendMessage(msg) {
     if (msg.trim() !== "") {
         const message = {
@@ -59,14 +67,14 @@ function sendMessage(msg) {
         };
         stompClient.send("/app/chat", {}, JSON.stringify(message));
         console.log('message send!');
-        let sendMess = '<div style="background: #86A8E7; color: white;"><div class="msg-info-name" style = "color: black;"><b>' + users.senderFirstName + ' ' + users.senderLastName + ' </b></div><div class="msg-text">' + msg + '</div></div>';
+        let sendMess = '<div class="msg right-msg"><div class="msg-bubble"><div class="msg-info"> <div class="msg-info-name">' + users.senderFirstName + ' ' + users.senderLastName + '</div><div class="msg-info-time"></div></div><div class="msg-text">' + msg + '</div></div></div>';
         $(sendMess).appendTo("#messages");
         scrollMessages();
     }
 }
 
 function onMessageReceived(msg) {
-    let mess = '<div style="background: #D16BA5; color: white;"><div class="msg-info-name" style = "color: black;"><b>' + users.recipientFirstName + ' ' + users.recipientLastName + ' </b></div><div class="msg-text">' + JSON.parse(msg.body).message + '</div></div>';
+    let mess = '<div class="msg left-msg"><div class="msg-bubble"><div class="msg-info"><div class="msg-info-name">' + users.recipientFirstName + ' ' + users.recipientLastName + '</div><div class="msg-info-time"></div></div><div class="msg-text">' + JSON.parse(msg.body).message + '</div></div></div>';
     $(mess).appendTo("#messages");
     scrollMessages();
 }
@@ -83,16 +91,16 @@ function loadMessage() {
     $.ajax({
         cache: false,
         type: "GET",
-        url:  CHAT_SERVICE + "/users/messages/" + users.recipientId,
+        url: CHAT_SERVICE + "/users/messages/" + users.recipientId,
         contentType: "application/json",
         success: function (data) {
             $(function () {
                 for (let i = 0; i < data.length; i++) {
                     let test;
                     if (data[i].senderId === users.senderId.toString()) {
-                        test = '<div style="background: #86A8E7; color: white;"><div class="msg-info-name" style = "color: black;"><b>' + users.senderFirstName + ' ' + users.senderLastName + ' </b></div><div class="msg-text">' + data[i].message + '</div></div>';
+                        test = '<div class="msg right-msg"><div class="msg-bubble"><div class="msg-info"> <div class="msg-info-name">' + users.senderFirstName + ' ' + users.senderLastName + '</div><div class="msg-info-time"></div></div><div class="msg-text">' + data[i].message + '</div></div></div>';
                     } else {
-                        test = '<div style="background: #D16BA5; color: white;"><div class="msg-info-name" style = "color: black;"><b>' + users.recipientFirstName + ' ' + users.recipientLastName + ' </b></div><div class="msg-text">' + data[i].message + '</div></div>';
+                        test = '<div class="msg left-msg"><div class="msg-bubble"><div class="msg-info"> <div class="msg-info-name">' + users.recipientFirstName + ' ' + users.recipientLastName + '</div><div class="msg-info-time"></div></div><div class="msg-text">' + data[i].message + '</div></div></div>';
                     }
                     $(test).appendTo("#messages");
 

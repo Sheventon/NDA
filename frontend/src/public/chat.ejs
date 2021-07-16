@@ -13,17 +13,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"
             integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/chat-style.css">
 </head>
-<body onload="connect(<%=userId%>)">
-<h1 id="testImport"></h1>
+<body onload="connect(<%= userId %>)">
 <div class="wrapper">
     <section class="msger">
+        <header class="msger-header">
+            <div class="msger-icon-profile"
+                 style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabrl2VTWfpp7MbwZp6gVKWPv5C_3Xkx-VlQ&usqp=CAU')"></div>
+            <div class="msger-name-profile" id="ms_name"></div>
+        </header>
         <main class="msger-chat" id="messages">
 
         </main>
         <div class="msger-inputarea">
             <input class="msger-input" id="message" placeholder="Enter your message...">
-            <button id="sendBtn" type="submit" class="msger-send-btn" onclick="send()">Send</button>
+            <button id="sendBtn" type="submit" class="msger-send-btn" onclick="send()"><img src="/btn_send.svg" alt="">
+            </button>
         </div>
     </section>
 </div>
