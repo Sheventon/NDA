@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.itis.usersservice.exceptions.ConfirmMaliException;
 import ru.itis.usersservice.services.ConfirmMailService;
 
+import javax.annotation.security.PermitAll;
+
 /**
  * created: 14-07-2021 - 13:07
  * project: NDA
@@ -30,6 +32,7 @@ public class ConfirmMailController {
 
 
     @PutMapping("/confirm-mail/{code}")
+    @PermitAll
     public ResponseEntity<?> confirmMail(@PathVariable String code) {
         try {
             confirmMailService.confirmMail(code);

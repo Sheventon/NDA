@@ -6,7 +6,11 @@
 
     <groupId>ru.itis</groupId>
     <artifactId>NDA</artifactId>
+    <packaging>pom</packaging>
     <version>0.1</version>
+    <modules>
+        <module>jwt-security-lib</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
