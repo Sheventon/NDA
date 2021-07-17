@@ -14,8 +14,24 @@
             integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="/chat-style.css">
+    <link rel="stylesheet" href="/header-style.css">
+    <link rel="stylesheet" href="/color-style.css">
 </head>
 <body onload="connect(<%= userId %>)">
+<header>
+    <nav class="header_nav">
+        <div class="toggle">
+            <img class="logo" src="/logo.svg" alt="">
+        </div>
+        <ul class="menu">
+            <li><a href="">ads</a></li>
+            <li><a href="">profile</a></li>
+            <li><a href="">home</a></li>
+            <li class="big_logo"><img src="/logo.svg" alt=""></li>
+        </ul>
+    </nav>
+
+</header>
 <div class="wrapper">
     <section class="msger">
         <header class="msger-header">
@@ -34,5 +50,6 @@
     </section>
 </div>
 <script type="text/javascript" src="/chat-script.js"></script>
+<script type="text/javascript" src="/header-navbar.js"></script>
 </body>
 </html>
