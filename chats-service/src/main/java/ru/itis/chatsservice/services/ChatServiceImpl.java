@@ -85,4 +85,9 @@ public class ChatServiceImpl implements ChatService {
         }
         return UsersDto.builder().build();
     }
+
+    static class Config {
+        private String url;
+    }
+
 }

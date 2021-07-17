@@ -7,14 +7,23 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/auth/**
         - id: USER-SERVICE
           uri: lb://USER-SERVICE
           predicates:
             - Path=/users/**
         - id: CHAT-SERVICE
-          uri: lb://CHAT-SERVICE
+          uri: lb:ws://CHAT-SERVICE
           predicates:
-            - Path=/messanger/
+            - Path=/messanger/**
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
 
 eureka:
   client:

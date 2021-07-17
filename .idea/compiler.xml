@@ -7,12 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="auth-service" />
         <module name="discovery-server" />
         <module name="users-service" />
         <module name="auctions-service" />
         <module name="ads-service" />
         <module name="api-gateway" />
-        <module name="NDA" />
+        <module name="jwt-security-lib" />
         <module name="chats-service" />
       </profile>
     </annotationProcessing>
@@ -26,6 +27,7 @@
       <module name="api-gateway" options="-parameters" />
       <module name="api-gateway-service" options="-parameters" />
       <module name="auctions-service" options="-parameters" />
+      <module name="auth-service" options="-parameters" />
       <module name="chats-service" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
       <module name="users-service" options="-parameters" />
