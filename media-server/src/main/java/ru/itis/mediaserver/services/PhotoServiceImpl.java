@@ -25,7 +25,7 @@ public class PhotoServiceImpl implements PhotoService {
     private PhotoRepository photoRepository;
 
     @Override
-    public String savePhoto(MultipartFile photo, Boolean isFromUser, Long id) {
+    public Long savePhoto(MultipartFile photo, Boolean isFromUser, Long id) {
         String path = "";
         if (isFromUser) {
             path = path + FILE_DIRECTORY_USERS;
@@ -41,13 +41,13 @@ public class PhotoServiceImpl implements PhotoService {
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             fileOutputStream.write(photo.getBytes());
             fileOutputStream.close();
-            photoRepository.save(Photo.builder()
+            Photo saved = photoRepository.save(Photo.builder()
                     .path(path)
                     .build());
+            return saved.getId();
         } catch (IOException e) {
             throw new IllegalArgumentException("File could not be created");
         }
-        return path;
     }
 
     @Override
