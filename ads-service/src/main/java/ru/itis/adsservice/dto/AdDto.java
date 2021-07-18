@@ -88,6 +88,7 @@ public class AdDto {
 
     @ApiModelProperty(value = "Used for adding photos to rents")
     private List<String> photos;
+    private UserDto userDto;
 
     public static AdDto from(Ad ad) {
         return AdDto.builder()

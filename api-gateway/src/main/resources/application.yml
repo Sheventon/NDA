@@ -19,11 +19,11 @@ spring:
           uri: lb:ws://CHAT-SERVICE
           predicates:
             - Path=/messanger/**
-
-logging:
-  level:
-    org.springframework.cloud.gateway: DEBUG
-    reactor.netty.http.client: DEBUG
+ads_service_2_and_front
+        - id: ADS-SERVICE
+          uri: lb://ADS-SERVICE
+          predicates:
+            - Path=/ads/**
 
 eureka:
   client:

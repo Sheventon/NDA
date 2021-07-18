@@ -17,10 +17,10 @@ public class Ad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Length(max = 1000)
+    @Length(max = 5000)
     private String description;
 
-    @Length(max = 1000)
+    @Length(max = 5000)
     private String additionalInformation;
 
     @Enumerated(value = EnumType.STRING)

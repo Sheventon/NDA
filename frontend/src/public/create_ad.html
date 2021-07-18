@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Ad</title>
+    <link rel="stylesheet" href="../style/create_ad.css">
+</head>
+<body>
+<div class="content">
+    <div class="head">
+        <div class="first-heading">Ad</div>
+        <div class="second-heading">Create Ad</div>
+    </div>
+    <div class="form">
+        <form method="post" action="/ads/create">
+            <div class="building-type">
+                <input type="radio" name="buildingType" class="radio" id="radio-1" checked>
+                <label for="radio-1">Дом</label>
+                <input type="radio" name="buildingType" class="radio" id="radio-2">
+                <label for="radio-2">Квартира</label>
+            </div>
+
+            <label></label>
+            <input type="text" class="text-input" name="city" placeholder="введите город">
+            <input type="text" class="text-input" name="street" placeholder="введите улицу">
+            <input type="text" class="text-input" name="house" placeholder="введите номер дома">
+            <input type="text" class="text-input" name="flat" placeholder="введите номер квартиры">
+            <input type="text" class="text-input" name="floor" placeholder="введите этаж/коичество">
+            <input type="text" class="text-input" name="area" placeholder="введите площадь">
+            <input type="text" class="text-input" name="roomsCount" placeholder="введите количество комнат">
+            <input type="text" class="text-input" name="description" placeholder="введите описание">
+
+            <div class="buy-book">
+                <input type="radio" name="adType" class="radio" id="radio-3" checked>
+                <label for="radio-3">Продажа</label>
+                <input type="radio" name="adType" class="radio" id="radio-4">
+                <label for="radio-4">Аренда</label>
+            </div>
+
+            <div class="date">
+                <input type="text" class="text-input data" name="from" placeholder="дата с">
+                <input type="text" class="text-input data" name="to" placeholder="дата до">
+            </div>
+            <input type="submit" class="button" value="create">
+        </form>
+    </div>
+</div>
+</body>
+</html>
