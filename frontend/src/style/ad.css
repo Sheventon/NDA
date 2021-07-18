@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-light: #8abdff;
+    --primary: #6d5dfc;
+    --primary-dark: #5b0eeb;
+    --purple-dark: #ab05a4;
+    --purple-light: #f740f0;
+    --white: #FFFFFF;
+    --greyLight-1: #E4EBF5;
+    --greyLight-2: #c8d0e7;
+    --greyLight-3: #bec8e4;
+    --greyDark: #9baacf;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: #E4EBF5;
+    display: flex;
+    justify-content: center;
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    color: #6D5DFC;
+    text-shadow: 4px 4px 4px rgba(189, 201, 224, 0.3), -4px -4px 4px rgba(255, 255, 255, 0.3);
+}
+
+.content {
+    width: 80%;
+}
+
+.main {
+    background: #E4EBF5;
+    box-shadow: -4px -5px 6px rgba(255, 255, 255, 0.3), 4px 4px 6px rgba(155, 170, 207, 0.4);
+    border-radius: 25px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    padding: 10px 80px;
+}
+
+.ad-name {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: 35% 60%;
+    justify-content: space-between;
+}
+
+.photo-slider {
+    background: url("../public/Proekt-villy-v-Altea-10.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 300px;
+    height: 270px;
+    border-radius: 20px;
+}
+
+.button {
+    margin-top: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 20px;
+    background: #6E5FFC;
+    border: none;
+    color: #FFFFFF;
+}
+
+.button:active {
+    box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
+}
+
+.auction {
+    /*background: rgba(255, 9, 245, 1);*/
+    background: #FF09F5;
+    box-shadow: inset 0.2rem 0.2rem 1rem var(--purple-light), inset -0.2rem -0.2rem 1rem var(--purple-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+.auction:active {
+    box-shadow: inset 0.2rem 0.2rem 1rem var(--purple-dark), inset -0.2rem -0.2rem 1rem var(--purple-light);
+}
+
+.firstly {
+    font-size: 34px;
+}
+
+.secondary {
+    font-size: 24px;
+    color: #BDC9E0;
+}
+
+.owner-name, .phone {
+    text-align: right;
+    font-size: 20px;
+    color: #666666;
+    padding-right: 55px;
+}
+
+.properties {
+    font-size: 24px;
+}
+
+.property {
+    color: #666666;
+}
+
+.descr {
+    font-size: 20px;
+    height: 255px;
+    overflow-y: auto;
+}
+
+.properties-details {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.price {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.price-value {
+    font-size: 40px;
+    font-weight: bold;
+    color: #4B9A3E;
+    text-shadow: 4px 4px 4px rgba(189, 201, 224, 0.3), -4px -4px 4px rgba(255, 255, 255, 0.3);
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+}

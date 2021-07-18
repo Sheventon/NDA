@@ -1,0 +1,7 @@
+@import "src/style/catstrap/reset.css";
+@import "src/style/color-style.css";
+
+p.footer__text {
+    font-size: 18px;
+    color: var(--greyLight-3);
+}

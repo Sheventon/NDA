@@ -2,27 +2,30 @@ package ru.itis.adsservice.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import ru.itis.adsservice.dto.AdDto;
 import ru.itis.adsservice.dto.CreateAdDto;
 import ru.itis.adsservice.models.*;
-import ru.itis.adsservice.repositories.*;
+import ru.itis.adsservice.repositories.AddressesRepository;
+import ru.itis.adsservice.repositories.AdsRepository;
+import ru.itis.adsservice.repositories.BuildingsRepository;
+import ru.itis.adsservice.repositories.RentsRepository;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class AdsServiceImpl implements AdsService {
 
-    @Value("${file.upload-dir}")
-    private String FILE_DIRECTORY;
+    private final String URL_GET_USER = "http://user-service/users/";
 
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Autowired
     private AdsRepository adsRepository;
@@ -33,7 +36,7 @@ public class AdsServiceImpl implements AdsService {
     @Autowired
     private RentsRepository rentsRepository;
     @Autowired
-    private PhotosRepository photosRepository;
+    private PhotosService photosService;
 
     @Override
     public AdDto getById(Long id) {
@@ -54,7 +57,7 @@ public class AdsServiceImpl implements AdsService {
     @Override
     public AdDto createAd(String strAd, List<MultipartFile> files) {
         CreateAdDto createAdDto = getCreateAdDto(strAd);
-        List<Photo> photos = savePhotos(files);
+        List<Photo> photos = photosService.savePhotos(files);
         Address address = Address.builder()
                 .city(createAdDto.getCity())
                 .street(createAdDto.getStreet())
@@ -92,32 +95,11 @@ public class AdsServiceImpl implements AdsService {
         adsRepository.save(ad);
         for (Photo photo : photos) {
             photo.setAd(ad);
-            photosRepository.save(photo);
+            photosService.save(photo);
         }
         return AdDto.from(ad);
     }
 
-    @Override
-    public List<Photo> savePhotos(List<MultipartFile> files) {
-        List<Photo> photos = new ArrayList<>();
-        for (MultipartFile multipartFile : files) {
-            String path = FILE_DIRECTORY + UUID.randomUUID() + ".jpg";
-            File file = new File(path);
-            try {
-                file.createNewFile();
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
-                fileOutputStream.write(multipartFile.getBytes());
-                fileOutputStream.close();
-                Photo photo = Photo.builder()
-                        .path(path)
-                        .build();
-                photos.add(photo);
-            } catch (IOException e) {
-                throw new IllegalStateException("File could not be created");
-            }
-        }
-        return photos;
-    }
 
     @Override
     public CreateAdDto getCreateAdDto(String ad) {
