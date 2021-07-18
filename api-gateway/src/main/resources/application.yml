@@ -14,7 +14,11 @@ spring:
         - id: CHAT-SERVICE
           uri: lb://CHAT-SERVICE
           predicates:
-            - Path=/messanger/
+            - Path=/messanger/**
+        - id: ADS-SERVICE
+          uri: lb://ADS-SERVICE
+          predicates:
+            - Path=/ads/**
 
 eureka:
   client:

@@ -31,6 +31,7 @@ public class AdDto {
     private LocalDate timeFrom;
     private LocalDate timeTo;
     private List<String> photos;
+    private UserDto userDto;
 
     public static AdDto from(Ad ad) {
         return AdDto.builder()
