@@ -13,9 +13,10 @@ public class PhotoController {
     @Autowired
     private PhotoService photoService;
 
-    @PostMapping("/photo/save")
-    public ResponseEntity<String> postPhoto(@RequestPart("file") MultipartFile file) {
-        return ResponseEntity.ok(photoService.savePhoto(file, true, 1L));
+    @PostMapping("/photo/save/{folder-name}")
+    public ResponseEntity<Long> postPhoto(@RequestPart("file") MultipartFile file,
+                                            @PathVariable("folder-name") String folderName) {
+        return ResponseEntity.ok(photoService.savePhoto(file, folderName));
     }
 
     @GetMapping(value = "/photo/id{photo-id}", produces = MediaType.IMAGE_JPEG_VALUE)

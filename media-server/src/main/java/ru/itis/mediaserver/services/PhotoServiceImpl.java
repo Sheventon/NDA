@@ -15,24 +15,15 @@ import java.util.UUID;
 @Service
 public class PhotoServiceImpl implements PhotoService {
 
-    @Value("${file.upload-dir.users}")
-    private String FILE_DIRECTORY_USERS;
-
-    @Value("${file.upload-dir.ads}")
-    private String FILE_DIRECTORY_ADS;
+    @Value("${file.upload-dir}")
+    private String FILE_DIRECTORY;
 
     @Autowired
     private PhotoRepository photoRepository;
 
     @Override
-    public Long savePhoto(MultipartFile photo, Boolean isFromUser, Long id) {
-        String path = "";
-        if (isFromUser) {
-            path = path + FILE_DIRECTORY_USERS;
-        } else {
-            path = path + FILE_DIRECTORY_ADS;
-        }
-        path = path + "id" + id + "/";
+    public Long savePhoto(MultipartFile photo, String folder) {
+        String path = FILE_DIRECTORY + folder + "/";
         try {
             Files.createDirectories(Paths.get(path));
             path = path + UUID.randomUUID().toString() + ".jpg";
