@@ -1,0 +1,28 @@
+@import "login-page.css";
+
+.content__form {
+    padding: 30px 60px;
+}
+
+.input {
+    margin-bottom: 10px;
+}
+
+.content__title svg {
+    width: 110px;
+    height: auto;
+    fill: var(--primary);
+
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    margin: 15px 0 -10px 0;
+}
+
+.input.user::before {
+    content: url("/user.svg");
+}
+.input.phone::before {
+    content: url("/phone.svg");
+}

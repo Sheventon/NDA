@@ -1,0 +1,15 @@
+ul.nav__items
+    li.nav__item
+        a(href='/ads') ads
+    if authenticated
+        li.nav__item
+            a(href='/profile') profile
+    else
+        li.nav__item
+            a(href='/login') log in
+        li.nav__item
+            a(href='/signup') sign up
+    li.nav__item
+        a(href='/') home
+    li.nav__item
+        img#logo(src='/logo.svg' alt='logo')

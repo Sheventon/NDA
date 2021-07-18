@@ -1,0 +1,32 @@
+@import "src/style/catstrap/reset.css";
+@import "src/style/color-style.css";
+
+ul.nav__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 18px;
+}
+
+li.nav__item {
+    display: inline-block;
+}
+
+li.nav__item > a {
+    padding: 5px 0;
+    text-align: center;
+    width: 150px;
+    display: inline-block;
+    color: var(--greyLight-3);
+    border-radius: 20px;
+
+    transition: .3s ease;
+}
+
+li.nav__item > a:hover {
+    color: #fff;
+    background: var(--primary);
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
+    -0.2rem -0.2rem 0.5rem var(--white);
+}
