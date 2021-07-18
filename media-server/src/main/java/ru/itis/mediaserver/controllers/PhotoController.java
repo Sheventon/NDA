@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.itis.mediaserver.services.PhotoService;
 
 @RestController
+@RequestMapping("/media")
 public class PhotoController {
 
     @Autowired
