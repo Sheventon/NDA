@@ -74,6 +74,10 @@ input {
     border: none;
     height: 60px;
     background: transparent;
+
+    color: var(--primary);
+    font-weight: 500;
+    width: 100%;
 }
 
 input:focus {
@@ -83,6 +87,7 @@ input:focus {
 input::placeholder {
     color: var(--greyLight-3);
     font-size: 18px;
+    font-weight: 400;
 }
 
 input[type="submit"] {

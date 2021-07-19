@@ -1,7 +1,6 @@
 import { __dirname} from "../common/constants.js";
 
 let loginController = function (req, res){
-    console.log(__dirname);
     res.render("login-page.pug", {
         authenticated: false
     })

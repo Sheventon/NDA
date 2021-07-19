@@ -4,6 +4,8 @@ import homeRouter from './api-routers/home.js';
 import chatRouter from './api-routers/chat-service.js';
 import login from './api-routers/login.js';
 import signup from "./api-routers/signup.js";
+import account from "./api-routers/account.js";
+
 import { __dirname } from './common/constants.js';
 
 const port = 3000;
@@ -29,6 +31,7 @@ router.use(homeRouter);
 router.use(chatRouter);
 router.use(login);
 router.use(signup);
+router.use(account);
 
 
 app.listen(process.env.port || port);

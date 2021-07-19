@@ -19,7 +19,6 @@ spring:
           uri: lb:ws://CHAT-SERVICE
           predicates:
             - Path=/messanger/**
-ads_service_2_and_front
         - id: ADS-SERVICE
           uri: lb://ADS-SERVICE
           predicates:

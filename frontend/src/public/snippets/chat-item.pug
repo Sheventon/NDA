@@ -1,0 +1,5 @@
+mixin chat-item(user)
+    a(href=`/chat/${user.id}`).chat-item.inner-shadow
+        .chat-item__image-wrapper
+            img.chat-item__image(src=user.photo alt='chat image')
+        p.chat-item__user-info #{user.firstName} #{user.lastName}

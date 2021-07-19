@@ -20,7 +20,6 @@ import ru.itis.security.provider.JwtAuthenticationProvider;
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
@@ -28,7 +27,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new JwtAuthenticationProvider();
     }
 
-    @Bean JwtFilter jwtFilter() {
+    @Bean
+    JwtFilter jwtFilter() {
         return new JwtFilter();
     }
 
