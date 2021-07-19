@@ -19,6 +19,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-gateway-service" target="1.8" />
+      <module name="frontend" target="1.5" />
+      <module name="media-service" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
