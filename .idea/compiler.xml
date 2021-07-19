@@ -12,13 +12,17 @@
         <module name="users-service" />
         <module name="auctions-service" />
         <module name="ads-service" />
+        <module name="media-service" />
         <module name="api-gateway" />
         <module name="jwt-security-lib" />
+        <module name="frontend" />
         <module name="chats-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-gateway-service" target="1.8" />
+      <module name="frontend" target="1.5" />
+      <module name="media-service" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -30,6 +34,7 @@
       <module name="auth-service" options="-parameters" />
       <module name="chats-service" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
+      <module name="media-service" options="-parameters" />
       <module name="users-service" options="-parameters" />
     </option>
   </component>

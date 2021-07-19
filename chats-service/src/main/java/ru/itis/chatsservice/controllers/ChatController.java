@@ -4,17 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.chatsservice.dto.UsersDto;
 import ru.itis.chatsservice.models.ChatRoom;
 import ru.itis.chatsservice.models.Message;
 import ru.itis.chatsservice.models.User;
 import ru.itis.chatsservice.services.ChatService;
+import ru.itis.security.details.UserDetailsImpl;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping(value = "/messenger")
 public class ChatController {
 
     @Autowired
@@ -33,22 +34,22 @@ public class ChatController {
                 "queue/messages", message);
     }
 
-    @GetMapping("/chat/{id}")
-    public ResponseEntity<UsersDto> getUsersInfo(@PathVariable("id") Long id){
-        return ResponseEntity.ok(chatService.getInfoAboutUsers(id));
+    @PostMapping("/chat/{id}")
+    public ResponseEntity<UsersDto> getUsersInfo(@PathVariable("id") Long recipientId,
+                                                 @AuthenticationPrincipal UserDetailsImpl userDetails){
+        return ResponseEntity.ok(chatService.getInfoAboutUsers(recipientId, userDetails.getId(), userDetails.getToken()));
     }
 
-    @GetMapping("/users/me")
-    public ResponseEntity<?> getAuthUser() {
-        //TODO опять же таки решить момент как брать id аутентифицированного пользователя
-        User user = chatService.getUserById(1L);
+    @PostMapping("/users/me")
+    public ResponseEntity<?> getAuthUser(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        User user = chatService.getUserById(userDetails.getId(), userDetails.getToken());
         return ResponseEntity.ok(user);
     }
 
-    @GetMapping("/users/messages/{receptorId}")
-    public ResponseEntity<?> getAllMessages(@PathVariable("receptorId") String receptorId) {
-        //TODO аналогично как и в методе getAuthUser
-        User sender = chatService.getUserById(1L);
+    @PostMapping("/users/messages/{receptorId}")
+    public ResponseEntity<?> getAllMessages(@PathVariable("receptorId") String receptorId,
+                                            @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        User sender = chatService.getUserById(userDetails.getId(), userDetails.getToken());
         return ResponseEntity.ok(chatService.getMessages(String.valueOf(sender.getId()), receptorId));
     }
 

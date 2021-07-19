@@ -16,9 +16,9 @@ spring:
           predicates:
             - Path=/users/**
         - id: CHAT-SERVICE
-          uri: lb:ws://CHAT-SERVICE
+          uri: lb://CHAT-SERVICE
           predicates:
-            - Path=/messanger/**
+            - Path=/messenger/**
         - id: ADS-SERVICE
           uri: lb://ADS-SERVICE
           predicates:
