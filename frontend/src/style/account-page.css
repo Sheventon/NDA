@@ -1,0 +1,173 @@
+@import "catstrap/catstrap.css";
+@import "color-style.css";
+
+/* body */
+
+*::before, *::after {
+    position: absolute;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--greyLight-1);
+    font-family: "Poppins", sans-serif;
+}
+
+.body__grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 900px) 1fr;
+    grid-template-rows: auto minmax(100vh, auto) auto;
+    grid-template-areas:
+            ". header ."
+            "content content content"
+            ". footer .";
+}
+
+/* header */
+.body__header {
+    padding-top: 32px;
+    grid-area: header;
+}
+
+/* content */
+.body__content {
+    grid-area: content;
+}
+
+.profile {
+    max-width: 1300px;
+
+    height: calc(100% - 40px);
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 40px;
+}
+
+.profile__top {
+    display: flex;
+    font-size: 28px;
+}
+
+.profile__image-wrapper {
+    background: var(--primary);
+    width: 360px;
+    height: 360px;
+
+    border-radius: 25px;
+    margin-right: 40px;
+
+    overflow: hidden;
+}
+.profile__image-wrapper img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.profile__info {
+    flex-grow: 1;
+}
+
+.profile__info-top {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.profile__info-bottom > div {
+    display: inline-block;
+}
+
+.profile__info-left {
+    font-weight: 600;
+    color: var(--greyLight-3);
+    margin-right: 30px;
+}
+
+.profile__info-right {
+    color: var(--primary-dark);
+}
+
+.profile__edit {
+    color: var(--greyLight-3);
+    display: block;
+    padding: 15px 50px;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.profile__bottom {
+
+}
+
+.profile__select-category {
+    padding: 20px 0;
+    display: flex;
+    position: relative;
+}
+
+.profile__select-category > input {
+    display: none;
+}
+
+.profile__select-item + label {
+    margin-right: 20px;
+    padding: 5px 50px;
+
+    color: var(--greyLight-3);
+    cursor: pointer;
+}
+
+.profile__select-category > input:checked + label{
+    background: var(--primary);
+    color: #fff;
+    font-size: 20px;
+
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
+    -0.2rem -0.2rem 0.5rem var(--white);
+    border-radius: 20px;
+}
+
+.profile__chats {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.chat-item {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+}
+
+.chat-item__image-wrapper {
+    width: 70px;
+    height: 70px;
+    background: var(--greyLight-3);
+
+    overflow: hidden;
+    border-radius: 10px;
+
+    margin-right: 20px;
+}
+
+.chat-item__user-info {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+
+/* footer */
+.body__footer {
+    grid-area: footer;
+    padding: 20px;
+}
+
+.body__footer .footer__text {
+    text-align: center;
+}

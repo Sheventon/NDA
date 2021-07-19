@@ -4,7 +4,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import ru.itis.security.details.UserDetailsImpl;
 import ru.itis.usersservice.dto.UpdateUserDto;
 import ru.itis.usersservice.dto.UserDto;
 import ru.itis.usersservice.services.UserService;
@@ -33,7 +37,8 @@ public class UsersRestController {
     @GetMapping("/users/all/get")
     @ApiOperation(value = "Get all users")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<List<UserDto>> getAllUsers() {
+    public ResponseEntity<List<UserDto>> getAllUsers(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        System.out.println(userDetails);
         return ResponseEntity.ok(userService.getAll());
     }
 
