@@ -12,8 +12,10 @@
         <module name="users-service" />
         <module name="auctions-service" />
         <module name="ads-service" />
+        <module name="media-service" />
         <module name="api-gateway" />
         <module name="jwt-security-lib" />
+        <module name="frontend" />
         <module name="chats-service" />
       </profile>
     </annotationProcessing>
@@ -30,6 +32,7 @@
       <module name="auth-service" options="-parameters" />
       <module name="chats-service" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
+      <module name="media-service" options="-parameters" />
       <module name="users-service" options="-parameters" />
     </option>
   </component>
