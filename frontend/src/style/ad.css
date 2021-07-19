@@ -56,7 +56,7 @@ body {
 }
 
 .photo-slider {
-    background: url("../public/Proekt-villy-v-Altea-10.jpg");
+    background: url("src/assets/Proekt-villy-v-Altea-10.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

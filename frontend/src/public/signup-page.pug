@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        title Sign Up
+        link(rel='stylesheet' href='/signup-page.css')
+    body
+        .body__grid-wrapper
+            .body__header
+                include snippets/header.pug
+            .body__content.content
+                .content__title
+                   svg(width='50' height='40' viewBox='0 0 50 40' fill='none' xmlns='http://www.w3.org/2000/svg')
+                        path(d='M48.6694 16.25H43.6777V11.25C43.6777 10.5625 43.1161 10 42.4298 10H39.9339C39.2475 10 38.686 10.5625 38.686 11.25V16.25H33.6942C33.0079 16.25 32.4463 16.8125 32.4463 17.5V20C32.4463 20.6875 33.0079 21.25 33.6942 21.25H38.686V26.25C38.686 26.9375 39.2475 27.5 39.9339 27.5H42.4298C43.1161 27.5 43.6777 26.9375 43.6777 26.25V21.25H48.6694C49.3558 21.25 49.9174 20.6875 49.9174 20V17.5C49.9174 16.8125 49.3558 16.25 48.6694 16.25ZM17.4711 20C22.9854 20 27.4545 15.5234 27.4545 10C27.4545 4.47656 22.9854 0 17.4711 0C11.9568 0 7.4876 4.47656 7.4876 10C7.4876 15.5234 11.9568 20 17.4711 20ZM24.4595 22.5H23.157C21.4255 23.2969 19.499 23.75 17.4711 23.75C15.4432 23.75 13.5245 23.2969 11.7852 22.5H10.4826C4.69535 22.5 0 27.2031 0 33V36.25C0 38.3203 1.67691 40 3.7438 40H31.1983C33.2652 40 34.9421 38.3203 34.9421 36.25V33C34.9421 27.2031 30.2468 22.5 24.4595 22.5Z')
+                   h2.title Registration
+                form(action='/signup' method='post').content__form.outer-shadow
+                    .input.user.inner-shadow
+                        input(type='text' placeholder='enter first name...' name='firstName')
+                    .input.user.inner-shadow
+                        input(type='text' placeholder='enter last name' name='lastName')
+                    .input.phone.inner-shadow
+                        input(type='tel' placeholder='enter phone number...' name='phone')
+                    .input.email.inner-shadow
+                        input(type='email' placeholder='enter email...' name='email')
+                    .input.password.inner-shadow
+                        input(type='password' placeholder='enter password...' name='password')
+                    input.outer-shadow(type='submit' value='Sign Up')
+            .body__footer
+                include snippets/footer.pug

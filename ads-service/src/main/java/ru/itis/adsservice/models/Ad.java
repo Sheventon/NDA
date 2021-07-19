@@ -40,6 +40,8 @@ public class Ad {
     @OneToMany(mappedBy = "ad")
     private List<Photo> photos;
 
+    private Long userId;
+
     public enum Type {
         BUY, BOOK
     }
