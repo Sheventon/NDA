@@ -2,6 +2,8 @@ package ru.itis.adsservice.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +14,7 @@ import ru.itis.adsservice.repositories.AddressesRepository;
 import ru.itis.adsservice.repositories.AdsRepository;
 import ru.itis.adsservice.repositories.BuildingsRepository;
 import ru.itis.adsservice.repositories.RentsRepository;
+import ru.itis.security.details.UserDetailsImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +23,9 @@ import java.util.List;
 @Service
 public class AdsServiceImpl implements AdsService {
 
-    private final String URL_GET_USER = "http://user-service/users/";
+    private final static String URL_GET_USER = "http://user-service/users/";
+
+    private final static String AUTHORIZATION = "Authorization";
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -55,7 +60,7 @@ public class AdsServiceImpl implements AdsService {
     }
 
     @Override
-    public AdDto createAd(String strAd, List<MultipartFile> files) {
+    public AdDto createAd(String strAd, List<MultipartFile> files, UserDetailsImpl userDetails) {
         CreateAdDto createAdDto = getCreateAdDto(strAd);
         List<Photo> photos = photosService.savePhotos(files);
         Address address = Address.builder()
@@ -84,6 +89,7 @@ public class AdsServiceImpl implements AdsService {
                 .description(createAdDto.getDescription())
                 .building(building)
                 .photos(photos)
+                .userId(userDetails.getId())
                 .build();
         address.getBuildings().add(building);
         rent.getAds().add(ad);
@@ -97,7 +103,9 @@ public class AdsServiceImpl implements AdsService {
             photo.setAd(ad);
             photosService.save(photo);
         }
-        return AdDto.from(ad);
+        AdDto adDto = AdDto.from(ad);
+        adDto.setUser(getUserInfo(userDetails));
+        return adDto;
     }
 
 
@@ -110,5 +118,15 @@ public class AdsServiceImpl implements AdsService {
             throw new IllegalStateException("Ad information does not found");
         }
         return createAdDto;
+    }
+
+    @Override
+    public User getUserInfo(UserDetailsImpl userDetails) {
+        String request = URL_GET_USER + userDetails.getId() + "/get";
+        RequestEntity<?> userRequest = RequestEntity.get(request)
+                .header(AUTHORIZATION, userDetails.getToken())
+                .build();
+        ResponseEntity<User> userRequestEntity = restTemplate.exchange(userRequest, User.class);
+        return userRequestEntity.getBody();
     }
 }

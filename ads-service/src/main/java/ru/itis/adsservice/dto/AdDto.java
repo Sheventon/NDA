@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.itis.adsservice.models.Ad;
 import ru.itis.adsservice.models.Photo;
+import ru.itis.adsservice.models.User;
 
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -88,7 +89,8 @@ public class AdDto {
 
     @ApiModelProperty(value = "Used for adding photos to rents")
     private List<String> photos;
-    private UserDto userDto;
+
+    private User user;
 
     public static AdDto from(Ad ad) {
         return AdDto.builder()

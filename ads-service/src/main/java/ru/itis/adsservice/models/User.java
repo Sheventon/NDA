@@ -1,4 +1,4 @@
-package ru.itis.adsservice.dto;
+package ru.itis.adsservice.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class User {
+    private Long id;
     private String firstName;
     private String lastName;
     private String phone;
