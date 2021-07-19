@@ -67,6 +67,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>5.5.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.itis</groupId>
+            <artifactId>jwt-security-lib</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -76,6 +86,15 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>ru.itis</groupId>
+                <artifactId>jwt-security-lib</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -15,7 +15,7 @@ public interface ChatService {
 
     public ChatRoom getChatRoom(String sender, String recipient);
 
-    User getUserById(Long id);
+    User getUserById(Long id, String token);
 
-    UsersDto getInfoAboutUsers(Long recipientId);
+    UsersDto getInfoAboutUsers(Long recipientId, Long senderId, String token);
 }

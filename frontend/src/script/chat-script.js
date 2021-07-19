@@ -14,9 +14,12 @@ function send() {
 function getUsersInfo() {
     $.ajax({
         cache: false,
-        type: 'GET',
+        type: 'POST',
+        headers:{
+            'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwicm9sZXMiOlsiVVNFUiJdLCJleHAiOjE2MjY3MDIzNTAsImlhdCI6MTYyNjY5ODc1MCwiZW1haWwiOiJuZnNrYTNAZ21haWwuY29tIn0.TNd5DGoosFw4KtBcS8goc7vKF6t8Ew8OCyzZZCWNif0maLMPwOSfJwK41O-Rw-vw7fNDa0IFQoTg1Q6xn94fFQ'
+        },
         setRequestHeader: '"Content-Type", "application/json"',
-        url: CHAT_SERVICE + "/chat/" + recId,
+        url: CHAT_SERVICE + "/messenger/chat/" + recId,
         contentType: "application/json",
         success: function (data) {
             users = JSON.parse(JSON.stringify(data));
@@ -85,13 +88,15 @@ function onError() {
 
 
 function loadMessage() {
-
     $("#messages").empty();
     console.log('message load! recipiendId = ' + users.recipientId);
     $.ajax({
         cache: false,
-        type: "GET",
-        url: CHAT_SERVICE + "/users/messages/" + users.recipientId,
+        type: "POST",
+        headers:{
+            'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwicm9sZXMiOlsiVVNFUiJdLCJleHAiOjE2MjY3MDIzNTAsImlhdCI6MTYyNjY5ODc1MCwiZW1haWwiOiJuZnNrYTNAZ21haWwuY29tIn0.TNd5DGoosFw4KtBcS8goc7vKF6t8Ew8OCyzZZCWNif0maLMPwOSfJwK41O-Rw-vw7fNDa0IFQoTg1Q6xn94fFQ'
+        },
+        url: CHAT_SERVICE + "/messenger/users/messages/" + users.recipientId,
         contentType: "application/json",
         success: function (data) {
             $(function () {

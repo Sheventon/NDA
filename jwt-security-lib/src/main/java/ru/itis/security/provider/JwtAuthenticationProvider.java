@@ -57,6 +57,8 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
 
                 jwtAuthentication.setAuthenticated(true);
                 jwtAuthentication.setUserDetails(userDetails);
+            } else {
+                throw new JWTVerificationException("iss or aud is null");
             }
         } catch (JWTVerificationException e) {
             jwtAuthentication = null;

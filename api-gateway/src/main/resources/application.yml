@@ -18,7 +18,7 @@ spring:
         - id: CHAT-SERVICE
           uri: lb://CHAT-SERVICE
           predicates:
-            - Path=/messanger/**
+            - Path=/messenger/**
         - id: ADS-SERVICE
           uri: lb://ADS-SERVICE
           predicates:
