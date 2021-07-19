@@ -1,4 +1,4 @@
-package ru.itis.usersservice.configurations;
+package ru.itis.adsservice.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,6 @@ import ru.itis.security.filters.JwtFilter;
 import ru.itis.security.provider.JwtAuthenticationProvider;
 
 /**
- * created: 17-07-2021 - 18:44
  * project: NDA
  *
  * @author dinar
@@ -20,6 +19,7 @@ import ru.itis.security.provider.JwtAuthenticationProvider;
  */
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean

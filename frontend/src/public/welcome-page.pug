@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        title Welcome
+        link(rel='stylesheet' href='/welcome-page.css')
+    body
+        .body__grid-wrapper
+            .body__header
+                include snippets/header.pug
+            .body__content.content
+                h2.content__title Welcome!
+                .content__info-wrapper.inner-shadow
+                    .content__info Welcome to NDA Real estate!
+                    .content__buttons
+                        a.content__button.outer-shadow.register(href = '/signup') register
+                        a.content__button.outer-shadow.login(href = '/login') login
+            .body__footer
+                include snippets/footer.pug

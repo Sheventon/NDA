@@ -1,0 +1,146 @@
+@import "catstrap/catstrap.css";
+@import "color-style.css";
+
+/* body */
+
+*::before, *::after {
+    position: absolute;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--greyLight-1);
+    font-family: "Poppins", sans-serif;
+}
+
+.body__grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 900px) 1fr;
+    grid-template-rows: auto minmax(100vh, auto) auto;
+    grid-template-areas:
+            ". header ."
+            ". content ."
+            ". footer .";
+}
+
+/* header */
+.body__header {
+    padding-top: 32px;
+    grid-area: header;
+}
+
+/* content */
+.body__content {
+    grid-area: content;
+}
+
+.content {
+    width: 70%;
+
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 40px 0;
+}
+
+.content__title svg {
+    width: 140px;
+    height: auto;
+}
+
+.input {
+    position: relative;
+    width: 70%;
+    background: var(--greyLight-1);
+    border: none;
+    margin: 0 0 30px 0;
+    border-radius: 20px;
+    height: 60px;
+    padding: 0 20px 0 50px;
+}
+
+input {
+    border: none;
+    height: 60px;
+    background: transparent;
+
+    color: var(--primary);
+    font-weight: 500;
+    width: 100%;
+}
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: var(--greyLight-3);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+input[type="submit"] {
+    margin-bottom: 0;
+
+    cursor: pointer;
+    width: auto;
+    padding: 0 70px;
+    font-size: 24px;
+    color: #fff;
+
+    border-radius: 20px;
+    background: var(--primary);
+
+    transition: .2s ease;
+}
+
+input[type="submit"]:hover {
+    background: var(--greyLight-1);
+    color: var(--greyLight-3);
+
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2),
+    inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+.input::before {
+    top: 15px;
+    left: 15px;
+}
+.input.email::before {
+    content: url("/email.svg");
+}
+.input.password::before {
+    content: url("/password.svg");
+}
+
+.content__form {
+    width: 100%;
+    padding: 90px 60px 60px 60px;
+    border-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* footer */
+.body__footer {
+    grid-area: footer;
+    padding: 20px;
+}
+
+.body__footer .footer__text {
+    text-align: center;
+}

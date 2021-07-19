@@ -1,0 +1,48 @@
+include snippets/chat-item.pug
+
+doctype html
+html
+    head
+        title Account
+        link(rel='stylesheet' href='/account-page.css')
+    body
+        .body__grid-wrapper
+            .body__header
+                include snippets/header.pug
+            .body__content.content
+                .content__profile.profile.outer-shadow
+                    .profile__top
+                        .profile__image-wrapper
+                            img.profile__image(src='/Proekt-villy-v-Altea-10.jpg' alt='profile image')
+                        .profile__info
+                            .profile__info-top
+                                a.profile__edit.outer-shadow(href='/') edit
+                            .profile__info-bottom
+                                h4.title Information
+                                .profile__info-left
+                                    p Name Surname
+                                    p Email
+                                    p Phone
+                                .profile__info-right
+                                    p Dinar Shagaliev
+                                    p dinar.shagaliev2002@gmail.com
+                                    p 89274781374
+                    .profile__bottom
+                        .profile__select-category
+                            input#ads-category.profile__select-item.ads(type='radio' value='ads' name='category' checked)
+                            label(for='ads-category') my ads
+                            input#chats-category.profile__select-item.chats(type='radio' value='chats' name='category')
+                            label(for='chats-category') my chats
+                        .profile__chats
+                            +chat-item({id: 1, photo: 'link', firstName: 'Dinar', lastName: 'Shagaliev'})
+                            +chat-item({photo: 'link', firstName: 'Dinar', lastName: 'Shagaliev'})
+                            +chat-item({photo: 'link', firstName: 'Dinar', lastName: 'Shagaliev'})
+                            +chat-item({photo: 'link', firstName: 'Dinar', lastName: 'Shagaliev'})
+                            +chat-item({photo: 'link', firstName: 'Dinar', lastName: 'Shagaliev'})
+                            +chat-item({photo: 'link', firstName: 'Dinar', lastName: 'Shagaliev'})
+                            +chat-item({photo: 'link', firstName: 'Dinar', lastName: 'Shagaliev'})
+                            +chat-item({photo: 'link', firstName: 'Dinar', lastName: 'Shagaliev'})
+                            +chat-item({photo: 'link', firstName: 'Dinar', lastName: 'Shagaliev'})
+                            +chat-item({photo: 'link', firstName: 'Dinar', lastName: 'Shagaliev'})
+            .body__footer
+                include snippets/footer.pug

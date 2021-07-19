@@ -1,0 +1,9 @@
+h2.title {
+    font-size: 56px;
+    color: var(--primary);
+}
+
+h4.title {
+    font-size: 36px;
+    color: var(--primary);
+}

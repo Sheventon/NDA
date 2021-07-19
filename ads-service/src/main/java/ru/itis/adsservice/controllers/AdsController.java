@@ -4,10 +4,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.itis.adsservice.dto.AdDto;
 import ru.itis.adsservice.services.AdsService;
+import ru.itis.security.details.UserDetailsImpl;
 
 import java.util.List;
 
@@ -30,7 +32,8 @@ public class AdsController {
     @ApiOperation(value = "Create an Ad",
             response = AdDto.class)
     public ResponseEntity<AdDto> createAd(@RequestPart("ad") String ad,
-                                          @RequestPart("files") List<MultipartFile> files) {
-        return ResponseEntity.ok(adsService.createAd(ad, files));
+                                          @RequestPart("files") List<MultipartFile> files,
+                                          @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return ResponseEntity.ok(adsService.createAd(ad, files, userDetails));
     }
 }
