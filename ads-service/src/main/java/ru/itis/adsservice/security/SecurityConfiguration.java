@@ -19,7 +19,6 @@ import ru.itis.security.provider.JwtAuthenticationProvider;
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
@@ -36,6 +35,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .sessionManagement().disable()
+                .authorizeRequests()
+                .antMatchers("/ads/create").authenticated()
+                .anyRequest().permitAll()
+                .and()
                 .authenticationProvider(jwtAuthenticationProvider())
                 .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
     }

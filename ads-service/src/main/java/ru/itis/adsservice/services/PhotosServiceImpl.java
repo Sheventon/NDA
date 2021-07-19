@@ -7,12 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.itis.adsservice.models.Photo;
 import ru.itis.adsservice.repositories.PhotosRepository;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class PhotosServiceImpl implements PhotosService {
@@ -20,8 +16,13 @@ public class PhotosServiceImpl implements PhotosService {
     @Value("${file.upload-dir}")
     private String FILE_DIRECTORY;
 
+    private String PATH = "http://MEDIA-SERVICE/media/photo/save";
+
     @Autowired
     private PhotosRepository photosRepository;
+
+    @Autowired
+    private RestTemplateService templateService;
 
     @Override
     public Photo getById(Long id) {
@@ -37,21 +38,10 @@ public class PhotosServiceImpl implements PhotosService {
     @Override
     public List<Photo> savePhotos(List<MultipartFile> files) {
         List<Photo> photos = new ArrayList<>();
-        for (MultipartFile multipartFile : files) {
-            String path = FILE_DIRECTORY + UUID.randomUUID() + ".jpg";
-            File file = new File(path);
-            try {
-                file.createNewFile();
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
-                fileOutputStream.write(multipartFile.getBytes());
-                fileOutputStream.close();
-                Photo photo = Photo.builder()
-                        .path(path)
-                        .build();
-                photos.add(photo);
-            } catch (IOException e) {
-                throw new IllegalStateException("File could not be created");
-            }
+        for (MultipartFile file : files) {
+            photos.add(Photo.builder()
+                    .path(String.valueOf(templateService.saveFile(PATH + FILE_DIRECTORY, file)))
+                    .build());
         }
         return photos;
     }

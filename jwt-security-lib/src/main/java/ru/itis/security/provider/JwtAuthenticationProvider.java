@@ -44,8 +44,8 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
         JwtAuthentication jwtAuthentication = new JwtAuthentication(token);
         try {
             DecodedJWT decodedJWT = decode(token);
-            if (decodedJWT.getIssuer().equals(iss) &&
-                    decodedJWT.getAudience().contains(aud)) {
+            if (decodedJWT.getIssuer() != null && decodedJWT.getIssuer().equals(iss) &&
+                     decodedJWT.getAudience() != null &&decodedJWT.getAudience().contains(aud)) {
                 Map<String, Claim> claims = decodedJWT.getClaims();
 
                 UserDetails userDetails = UserDetailsImpl.builder()
