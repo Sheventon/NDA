@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="postgres@localhost" uuid="c2a45b02-b07a-4007-8088-7e95e15cde8a">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="chat_db_service@localhost" uuid="8e78665e-68df-4b03-a2bc-3e1fcad5125f">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
@@ -15,11 +8,18 @@
       <jdbc-url>jdbc:postgresql://localhost:5433/chat_db_service</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="nda_user_service_db@localhost" uuid="9d2f9af5-27cf-409b-883c-288aa86b9cb0">
+    <data-source source="LOCAL" name="nda_ads_service_db@localhost" uuid="a855aa1b-d483-4b2f-8c24-77f47ca91f04">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5433/nda_user_service_db</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/nda_ads_service_db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="postgres@localhost" uuid="e5f3259b-eeb3-4aa2-bc6e-7a72e3d146ba">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="nda_auth_db@localhost" uuid="a7069254-ad36-4327-b2a5-38cafda30960">

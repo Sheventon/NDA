@@ -23,6 +23,10 @@ spring:
           uri: lb://ADS-SERVICE
           predicates:
             - Path=/ads/**
+        - id: MEDIA-SERVICE
+          uri: lb://MEDIA-SERVICE
+          predicates:
+            - Path=/media/**
 
 eureka:
   client:

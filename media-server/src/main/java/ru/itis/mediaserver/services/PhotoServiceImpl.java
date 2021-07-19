@@ -43,11 +43,10 @@ public class PhotoServiceImpl implements PhotoService {
 
     @Override
     public byte[] getPhotoById(Long id) {
-        Photo photo = photoRepository.getById(id);
+        Photo photo = photoRepository.findById(id).orElseThrow();
             try {
-                InputStream in = new FileInputStream(new File(photo.getPath()));
-                byte[] media = in.readAllBytes();
-                return media;
+                InputStream in = new FileInputStream(photo.getPath());
+                return in.readAllBytes();
             } catch (IOException e) {
                 throw new IllegalStateException("Photo with id = {" + id + "} not found");
             }

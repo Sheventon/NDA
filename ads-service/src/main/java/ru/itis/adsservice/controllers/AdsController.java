@@ -28,7 +28,7 @@ public class AdsController {
         return ResponseEntity.ok(adsService.getAllAds());
     }
 
-    @PostMapping("ads/create")
+    @PostMapping("/ads/create")
     @ApiOperation(value = "Create an Ad",
             response = AdDto.class)
     public ResponseEntity<AdDto> createAd(@RequestPart("ad") String ad,
